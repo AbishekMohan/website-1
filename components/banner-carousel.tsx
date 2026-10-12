@@ -46,7 +46,7 @@ export function BannerCarousel({ slides }: { slides: CarouselSlide[] }) {
 
   return (
     <section
-      className="relative w-full border-b-4 border-black dark:border-white mt-4 md:mt-6"
+      className="relative w-full border-b-4 border-black dark:border-white"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured highlights"
