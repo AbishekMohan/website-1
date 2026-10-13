@@ -6,18 +6,16 @@ export type NavEntry = { label: string; href: string } | { label: string; items:
 
 /**
  * Primary navigation. Every pre-existing page keeps its URL; this only
- * regroups them. Policy Fellowship is a student program (not a legal page), so
- * it lives under Programs and Get Involved; legal/privacy are the
- * "Policy / Transparency" entries under About.
+ * regroups them. Each destination appears once (no duplicate links, and no
+ * same-page #anchor entries). Policy Fellowship is a student program, so it
+ * sits under Programs; legal/privacy are "Policy / Transparency" under About.
  */
 export const NAV_ENTRIES: NavEntry[] = [
   { label: "Home", href: "/" },
   {
     label: "About",
     items: [
-      { label: "Our Story", href: "/about" },
-      { label: "Team", href: "/about#team" },
-      { label: "Locations", href: "/locations" },
+      { label: "Our Story & Team", href: "/about" },
       { label: "Policy / Transparency", href: "/legal" },
     ],
   },
@@ -25,27 +23,21 @@ export const NAV_ENTRIES: NavEntry[] = [
     label: "Programs",
     items: [
       { label: "Programs Overview", href: "/programs" },
-      { label: "STEM Sprouts Chapters", href: "/chapters" },
       { label: "Pinboard", href: "/pinboard" },
-      { label: "Policy Fellowship & Research", href: "/policy-fellowship" },
+      { label: "Policy Fellowship", href: "/policy-fellowship" },
     ],
   },
   {
     label: "Chapters",
     items: [
-      { label: "Chapters Overview", href: "/chapters" },
+      { label: "How Chapters Work", href: "/chapters" },
       { label: "Find a Chapter", href: "/locations" },
-      { label: "Start a Chapter", href: CHAPTER_APPLICATION_URL, external: true },
-      { label: "Chapter Leadership", href: "/chapter-leadership" },
-      { label: "Chapter Resources", href: "/resources#curriculum" },
     ],
   },
   {
     label: "Resources",
     items: [
-      { label: "All Resources", href: "/resources" },
-      { label: "STEM Activities & Tools", href: "/resources#tools" },
-      { label: "Curriculum", href: "/resources#curriculum" },
+      { label: "Learning Resources", href: "/resources" },
       { label: "Guides", href: "/guides" },
     ],
   },
@@ -53,10 +45,9 @@ export const NAV_ENTRIES: NavEntry[] = [
   {
     label: "Get Involved",
     items: [
-      { label: "Student Leadership", href: "/chapter-leadership" },
-      { label: "Join the Team", href: "/about#open-roles" },
+      { label: "Lead a Chapter", href: "/chapter-leadership" },
+      { label: "Start a Chapter", href: CHAPTER_APPLICATION_URL, external: true },
       { label: "Partner With Us", href: "/partner" },
-      { label: "Policy Fellowship", href: "/policy-fellowship" },
     ],
   },
   { label: "Contact", href: "/#contact" },

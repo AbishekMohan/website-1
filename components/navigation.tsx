@@ -74,14 +74,14 @@ function DesktopDropdown({ label, items }: { label: string; items: NavItem[] }) 
       {open && (
         <ul
           id={menuId}
-          className="absolute left-0 top-full mt-2 min-w-[15rem] z-50 bg-white dark:bg-black border-4 border-black dark:border-white rounded-xl p-2 shadow-[6px_6px_0px_0px_rgba(34,197,94,1)] list-none"
+          className="absolute left-0 top-full mt-1 min-w-[15rem] z-50 bg-white dark:bg-black border-2 border-black dark:border-white rounded-md py-2 shadow-lg list-none"
         >
           {items.map((item) => (
             <li key={item.label}>
               <NavLink
                 item={item}
                 onNavigate={() => setOpen(false)}
-                className="flex items-center px-3 py-2.5 rounded-md text-[15px] font-bold text-black dark:text-white hover:bg-[#22C55E]/20 focus-visible:bg-[#22C55E]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#15803d] dark:focus-visible:outline-[#22C55E] transition-colors"
+                className="flex items-center px-4 py-2.5 text-[15px] font-semibold text-black dark:text-white hover:bg-[#22C55E]/20 focus-visible:bg-[#22C55E]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#15803d] dark:focus-visible:outline-[#22C55E] transition-colors"
               />
             </li>
           ))}
@@ -135,11 +135,8 @@ export function Navigation() {
   const closeMobile = () => setOpen(false)
 
   return (
-    <div className="container mx-auto px-4 pt-2 pb-4 sticky top-2 z-50">
-      <nav
-        aria-label="Main navigation"
-        className="flex items-center justify-between bg-white dark:bg-black border-4 border-black dark:border-white rounded-xl px-5 py-3 max-w-7xl mx-auto shadow-[6px_6px_0px_0px_rgba(34,197,94,1)]"
-      >
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-black border-b-2 border-black dark:border-white">
+      <nav aria-label="Main navigation" className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
           <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-black dark:border-white flex-shrink-0">
             <Image src="/stem/logo.png" alt="STEM Sprouts logo" width={40} height={40} className="w-full h-full object-cover" />
@@ -197,8 +194,9 @@ export function Navigation() {
       {open && (
         <div
           id="mobile-navigation"
-          className="xl:hidden max-w-7xl mx-auto mt-3 bg-white dark:bg-black border-4 border-black dark:border-white rounded-xl p-4 shadow-[6px_6px_0px_0px_rgba(34,197,94,1)] flex flex-col gap-3 max-h-[75vh] overflow-y-auto"
+          className="xl:hidden absolute left-0 right-0 top-full bg-white dark:bg-black border-b-2 border-black dark:border-white shadow-lg max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
           {NAV_ENTRIES.map((entry) =>
             "items" in entry ? (
               <MobileDropdown key={entry.label} label={entry.label} items={entry.items} onNavigate={closeMobile} />
@@ -223,8 +221,9 @@ export function Navigation() {
             Donate <span aria-hidden="true">&nbsp;↗</span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
+          </div>
         </div>
       )}
-    </div>
+    </header>
   )
 }
